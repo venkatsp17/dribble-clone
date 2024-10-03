@@ -21,7 +21,7 @@ const CardsSection = () => {
                     />
                 ))}
             </div>
-            <div className='my-12'>
+            <div className='mt-12 mb-40'>
                 <OutlineButton text={"Browse more inspiration"} padding={4} width={70}/>
             </div>
         </div>
