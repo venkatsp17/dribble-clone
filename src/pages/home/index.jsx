@@ -4,6 +4,7 @@ import "./index.css";
 import CardsSection from "../../components/cardsSection";
 import YellowSection from "../../components/yellowSection";
 import { withHeaderFooter } from "../../hoc";
+import CategoryCarousel from "../../components/categoryCarousel";
 
 
 const HomePage = () => {
@@ -25,6 +26,7 @@ const HomePage = () => {
             <ProfileCarousel/>
             <CardsSection/>
             <YellowSection/>
+            <CategoryCarousel/>
         </>
     )
 }

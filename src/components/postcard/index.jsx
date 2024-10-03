@@ -9,7 +9,7 @@ const ImageCard = ({ image, title, likes, views, profileImg }) => {
 
 
     return (
-      <div className="rounded-lg">
+      <div className="rounded-lg mt-4">
         <img src={image} alt={title} className="w-full h-64 object-cover rounded-xl" />
         <div className="p-1 flex items-center justify-between">
           <div className="flex items-center w-4/6">
