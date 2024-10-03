@@ -5,9 +5,19 @@ import CardsSection from "../../components/cardsSection";
 import YellowSection from "../../components/yellowSection";
 import { withHeaderFooter } from "../../hoc";
 import CategoryCarousel from "../../components/categoryCarousel";
+import withDataLayout from "../../components/layouts/dataLayout";
+import { useCategories, useItems, useProfiles } from "../../api/query";
+
+const ProfileCarouselComponent = withDataLayout(ProfileCarousel);
+const CardSectionComponent = withDataLayout(CardsSection);
+const CategoryCarouselComponent = withDataLayout(CategoryCarousel);
 
 
 const HomePage = () => {
+    const { data: profiles, error: profilesError, isLoading: isProfilesLoading } = useProfiles();
+    const { data: items, error: itemsError, isLoading: isItemsLoading } = useItems();
+    const { data: categories, error: categoriesError, isLoading: isCategoriesLoading } = useCategories();
+
     return (
         <>
             <div className="flex flex-col items-center">
@@ -23,10 +33,10 @@ const HomePage = () => {
                     <button className={`font-[525] p-4 bg-black text-white border-none rounded-full w-32 hover:opacity-60`}>{"Get started"}</button>
                 </div>
             </div>
-            <ProfileCarousel/>
-            <CardsSection/>
+            <ProfileCarouselComponent data={profiles} error={profilesError} isLoading={isProfilesLoading}/>
+            <CardSectionComponent data={items} error={itemsError} isLoading={isItemsLoading}/>
             <YellowSection/>
-            <CategoryCarousel/>
+            <CategoryCarouselComponent data={categories} error={categoriesError} isLoading={isCategoriesLoading}/>
         </>
     )
 }
