@@ -4,9 +4,9 @@ import { logo } from "../../assets"
 const Footer = () => {
   return (
     <div className="min-h-56 w-100 flex flex-col items-center justify-around">
-         <div className="flex flex-col lg:flex-row justify-around items-center w-full">
+         <div className="flex flex-col lg:flex-row justify-around items-center w-full xl:max-w-[1300px]">
             <img src={logo} className='w-32 h-20 pr-4'/>
-            <ul className="list-none flex flex-wrap justify-center lg:justify-between items-center text-center gap-4 md:gap-3 text-sm">
+            <ul className="list-none flex flex-wrap justify-center lg:justify-between items-center text-center gap-4 md:gap-5 xl:gap-10 text-sm">
                 <li>For designers</li>
                 <li>Hire talent</li>
                 <li>Inspiration</li>
