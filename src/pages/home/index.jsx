@@ -1,18 +1,14 @@
 import ProfileCarousel from "../../components/autoscrollcards";
-import Navbar from "../../components/navbar";
 // import RoundedButton from "../../components/roundedbutton";
 import "./index.css";
 import CardsSection from "../../components/cardsSection";
 import YellowSection from "../../components/yellowSection";
+import { withHeaderFooter } from "../../hoc";
 
 
-
-
-
-const Home = () => {
+const HomePage = () => {
     return (
-        <div className="min-h-screen">
-            <Navbar />
+        <>
             <div className="flex flex-col items-center">
                 <div className="rounded-3xl px-5 py-1.5 bg-color-change animate-color-change mt-24 text-center mx-10">
                     <p className="text-gray-800 font-semibold">Over 3 million ready-to-work creatives!</p>
@@ -29,8 +25,10 @@ const Home = () => {
             <ProfileCarousel/>
             <CardsSection/>
             <YellowSection/>
-        </div>
+        </>
     )
 }
+
+const Home = withHeaderFooter(HomePage);
 
 export default Home;
