@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Mona-Sans Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('MonaSans'), url('./assets/fonts/MonaSans.woff2') format('woff2');
+  }
+
+@font-face {
+  font-family: 'Mona-Sans Semibold';
+  font-style: normal;
+  font-weight: 600;
+  src: local('MonaSans'), url('./assets/fonts/MonaSans.woff2') format('woff2');
+  }
+
+@font-face {
+  font-family: 'Source-Serif4 Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('SourceSerif4'), url('./assets/fonts/SourceSerif4.woff2') format('woff2');
+  }
+  
+
+
+body{
+  font-family: 'Mona-Sans Semibold';
+  background-color: #f8f7f4;
+}
