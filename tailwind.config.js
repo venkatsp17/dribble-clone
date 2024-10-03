@@ -12,7 +12,8 @@ export default {
       screens: {
         'custom-md':'950px',
         'custom-lg': '1400px', 
-        'custom-lg1': '1060px'
+        'custom-lg1': '1060px',
+        'custom-lg2': '1150px'
       },
       width:{
         '26': '6.5rem'
