@@ -1,14 +1,31 @@
-import React from 'react'
+import PropTypes from 'prop-types';
 import ImageCard from "../../components/postcard"
 import OutlineButton from '../outlineButton';
+import Subnav from "../subnav";
+import {useLayoutEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserFromLocalStorage } from '../../redux/authSlice';
+
 
 const CardsSection = ({data}) => {
+    
+    const dispatch = useDispatch();
+
+    const { user } = useSelector((state) => state.auth);
+
+    useLayoutEffect(()=>{
+        dispatch(setUserFromLocalStorage());
+    },[dispatch]);
+
     return (
         <div className='flex flex-col items-center'>
-            <div className="flex flex-col items-center mt-16 font-[525] text-center mx-10 heading1">
-                <h3 className="text-5xl md:text-5xl tracking-wide">Explore inspiring designs</h3>
+            {
+                user && <Subnav />
+            }
+            <div className={`flex flex-col items-center mt-16 font-[525] text-center mx-10 heading1 ${!user? "mt-16":"mt-0"}`}>
+                {!user &&  <h3 className="text-5xl md:text-5xl tracking-wide">Explore inspiring designs</h3>}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 custom-lg2:grid-cols-4 gap-2 md:gap-6 mt-14 mx-4 md:mx-16">
+            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 custom-lg2:grid-cols-4 gap-2 md:gap-6 ${!user? "mt-14":"mt-0"}  mx-4 md:mx-16`}>
                 {data.map((item, index) => (
                     <ImageCard
                         key={index}
@@ -26,5 +43,10 @@ const CardsSection = ({data}) => {
         </div>
     )
 }
+
+
+CardsSection.propTypes = {
+    data: PropTypes.any,             
+  };
 
 export default CardsSection
