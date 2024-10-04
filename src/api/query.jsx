@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { BASE_URL } from './config';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
 const fetchProfiles = async () => {
-  const response = await fetch(`${BASE_URL}/profiles`); 
-  console.log(response.json());      
+  const response = await fetch(`${BASE_URL}/profiles`);    
   if (!response.ok) {
     throw new Error('Error fetching profiles');
   }
@@ -26,6 +26,28 @@ const fetchCategories = async () => {
   }
   return response.json();
 };
+
+export const loginUser = createAsyncThunk('auth/loginUser', async (userCredentials, { rejectWithValue }) => {
+  try {
+    const response = await fetch(`${BASE_URL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userCredentials),
+    });
+
+    if (!response.ok) {
+      throw new Error('Login failed. Please check your credentials.');
+    }
+
+    const data = await response.json();
+    localStorage.setItem("user", btoa(JSON.stringify(data)))
+    return data; 
+  } catch (error) {
+    return rejectWithValue(error.message); 
+  }
+});
 
 export const useProfiles = () => {
     return useQuery({

@@ -1,6 +1,6 @@
 import { IoHeart } from "react-icons/io5";
-import { LikeIcon, ViewIcon } from "../../assets";
 import ProfileIcon from "../profileIcon";
+import PropTypes from 'prop-types'; 
 import "./index.css";
 import { TbEyeFilled } from "react-icons/tb";
 
@@ -34,6 +34,14 @@ const ImageCard = ({ image, title, likes, views, profileImg }) => {
         </div>
       </div>
     );
+  };
+
+  ImageCard.propTypes = {
+    image: PropTypes.any,             
+    title: PropTypes.any,           
+    likes: PropTypes.any,
+    views: PropTypes.any,
+    profileImg: PropTypes.any,
   };
 
 

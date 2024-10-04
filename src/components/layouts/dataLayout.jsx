@@ -1,32 +1,43 @@
-// withDataLayout.js
-import React from 'react';
-import { Error, Loading } from '../../assets';
+import PropTypes from 'prop-types'; 
+import { Error, Loading } from '../assets';
 
-const withDataLayout = (WrappedComponent, title) => {
-  return ({ data, error, isLoading }) => {
+const withDataLayout = (WrappedComponent) => {
+  const HOC = ({ data, error, isLoading }) => {
+
+    // console.log(data);
+    // console.log(error);
+    // console.log(isLoading);
+    
+    
+    
+    
     if (isLoading) {
       return (
-        <div className='min-h-screen flex justify-center items-center'>
-          <img src={Loading} alt="Loading..." className='h-12 w-12'/>
-          {/* <p>Loading...</p> */}
+        <div className='min-h-80 flex justify-center items-center'>
+          <img src={Loading} alt="Loading..." className='h-12 w-12' />
         </div>
       );
     }
 
     if (error) {
-        return (
-          <div className='min-h-screen flex justify-center items-center bg-transparent'>
-            <img src={Error} alt="Error" className='h-40 w-40 mix-blend-multiply' />
-            {/* <p>Error loading {title.toLowerCase()}</p> */}
-          </div>
-        );
-      }
-      
+      return (
+        <div className='min-h-80 flex justify-center items-center bg-transparent'>
+          <img src={Error} alt="Error" className='h-40 w-40 mix-blend-multiply' />
+        </div>
+      );
+    }
 
-    return (
-     <WrappedComponent data={data} />
-    );
+    return <WrappedComponent data={data} />;
   };
+
+ 
+  HOC.propTypes = {
+    data: PropTypes.any,             
+    error: PropTypes.any,           
+    isLoading: PropTypes.bool
+  };
+
+  return HOC;
 };
 
 export default withDataLayout;
