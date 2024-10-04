@@ -1,11 +1,11 @@
-import React from 'react'
+import PropTypes from 'prop-types';
 
 const CategoryCarousel = ({data}) => {
     const extendedProfiles = [...data, ...data];
 
   return (
-    <div className="overflow-hidden relative mt-12">
-    <div className="flex animate-scroll space-x-6">
+    <div className="overflow-hidden relative mt-12 group">
+       <div className="flex animate-scroll group-hover:animate-paused-scroll space-x-6 transition-transform duration-500">
       {extendedProfiles.map((profile, index) => (
       <div key={index} className="flex-none w-56 min-h-40 my-10">
       <div className="overflow-hidden rounded-xl">
@@ -20,5 +20,9 @@ const CategoryCarousel = ({data}) => {
   </div>
   )
 }
+
+CategoryCarousel.propTypes = {
+  data: PropTypes.any,             
+};
 
 export default CategoryCarousel
