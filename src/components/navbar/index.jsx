@@ -28,6 +28,7 @@ const Navbar = () => {
 
     const handleLogout = () =>{
         dispatch(logout());
+        navigate('/');
     }
 
   return (
@@ -58,15 +59,16 @@ const Navbar = () => {
                             src={"https://placehold.co/100x100?text=V"} 
                             className="rounded-full w-11 h-11 cursor-pointer" 
                             alt="User Avatar"
+                            onClick={()=>navigate(`/${user?.username}`)}
                           />
-                          <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-lg w-80 h-80 right-[20px]">
-                            <div className="flex flex-col items-center p-2">
+                          <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-lg w-80 h-80 right-[20px] z-50">
+                            <div className="flex flex-col items-center p-2 cursor-pointer" onClick={()=>navigate(`/${user?.username}`)}>
                               <img 
                                 src={"https://placehold.co/100x100?text=V"} 
                                 className="rounded-full w-20 h-20 mr-2" 
                                 alt="User Avatar"
                               />
-                              <span className="font-semibold mt-3 text-lg heading1">{user?.user?.username}</span> 
+                              <span className="font-semibold mt-3 text-lg heading1">{user?.username}</span> 
                             </div>
                             {/* <hr className="border-gray-300" /> */}
                             <ul className="py-2">
