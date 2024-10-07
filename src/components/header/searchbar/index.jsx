@@ -1,5 +1,4 @@
-import React from 'react'
-import { searchIcon } from '../../assets'
+import { searchIcon } from '../../../assets/index'
 
 const SearchBar = () => {
   return (

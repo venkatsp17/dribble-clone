@@ -1,9 +1,9 @@
-import { withHeaderFooter } from "../../hoc";
+import { withHeaderFooter } from "../../components/hoc";
 import { useDispatch, useSelector } from "react-redux";
 import { useLayoutEffect } from "react";
 import { setUserFromLocalStorage } from "../../redux/authSlice";
-import OutlineButton from "../../components/outlineButton";
-import { Placeholder, UploadCard } from "../../components/accountpagecard";
+import OutlineButton from "../../components/common/outlineButton";
+import { Placeholder, UploadCard } from "./components/accountpagecard";
 
 const AccountPage = () => {
   const { user } = useSelector((state) => state.auth);

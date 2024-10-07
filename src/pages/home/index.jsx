@@ -1,9 +1,9 @@
-import ProfileCarousel from "../../components/autoscrollcards";
+import ProfileCarousel from "./components/autoscrollcards";
 import "./index.css";
-import CardsSection from "../../components/cardsSection";
-import YellowSection from "../../components/yellowSection";
-import { withHeaderFooter } from "../../hoc";
-import CategoryCarousel from "../../components/categoryCarousel";
+import CardsSection from "./components/cardsSection";
+import YellowSection from "./components/yellowSection";
+import { withHeaderFooter } from "../../components/hoc";
+import CategoryCarousel from "./components/categoryCarousel";
 import withDataLayout from "../../layouts/dataLayout";
 import { useCategories, useItems, useProfiles } from "../../api/query";
 import { useLayoutEffect} from "react";

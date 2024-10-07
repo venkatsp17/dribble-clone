@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React from 'react'
-import RoundedButton from '../roundedbutton'
+import RoundedButton from '../../../../components/common/roundedbutton'
 
 const YellowSection = () => {
   return (

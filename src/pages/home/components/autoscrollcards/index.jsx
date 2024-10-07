@@ -1,4 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
 import PropTypes from 'prop-types';
+import React from 'react';
 
 
 const ProfileCarousel = ({data}) => {
@@ -23,6 +27,7 @@ const ProfileCarousel = ({data}) => {
                    className="absolute inset-0 w-full h-full object-cover" 
                    src={profile.videoSrc} 
                    autoPlay 
+                   role='video'
                    muted 
                    loop 
                    playsInline

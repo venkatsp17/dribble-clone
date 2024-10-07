@@ -1,5 +1,5 @@
-import Navbar from '../components/navbar'
-import Footer from '../components/footer'
+import Navbar from '../header/navbar'
+import Footer from '../footer'
 
 export const withHeaderFooter = (WrappedComponent) => {
   return function HeaderFooterHOC(props) {

@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './pages/home'
-import SignInPage from './pages/signIn'
+import SignInPage from './pages/auth/signIn'
 import Account from './pages/account'
-import SignUpPage from './pages/signUp'
+import SignUpPage from './pages/auth/signUp'
+import ProtectedRoute from './routes/protectedroute'
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/session/new" element={<SignInPage/>}/>
             <Route path="/signup/new" element={<SignUpPage />} />
-            <Route path="/:username" element={<Account />} />
+            <Route path="/:username" element={<ProtectedRoute element={<Account />}/>} />
         </Routes>
     </BrowserRouter>
   )

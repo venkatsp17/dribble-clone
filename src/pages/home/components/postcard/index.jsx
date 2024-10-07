@@ -1,12 +1,44 @@
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
-import ProfileIcon from "../profileIcon";
+import ProfileIcon from "../../../../components/common/profileIcon";
 import PropTypes from "prop-types";
 import "./index.css";
 import { TbEyeFilled } from "react-icons/tb";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserFromLocalStorage } from "../../../../redux/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const ImageCard = ({ image, title, likes, views, profileImg }) => {
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.auth);
+
+  useLayoutEffect(()=>{
+      dispatch(setUserFromLocalStorage());
+  },[dispatch]);
+
+  const handleBookmark = () => {
+    if(user){
+      setBookmark(bookmark?false:true)
+    }
+    else{
+      navigate('/session/new');
+    }
+  }
+
+  const handleLike = () => {
+    if(user){
+      setLike(like?false:true)
+    }
+    else{
+      navigate('/session/new');
+    }
+  }
+
   const [bookmark, setBookmark] = useState(false);
   const [like, setLike] = useState(false);
   return (
@@ -20,10 +52,10 @@ const ImageCard = ({ image, title, likes, views, profileImg }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end justify-between p-4">
           <div className="text-white">{title}</div>
           <div className="flex">
-            {!bookmark && <div onClick={()=>setBookmark(true)} className="w-10 h-10 bg-white rounded-full flex justify-center items-center mx-1"><FaRegBookmark color="black" size={18}/></div>}
-            {bookmark && <div onClick={()=>setBookmark(false)} className="w-10 h-10 bg-white rounded-full flex justify-center items-center mx-1"><FaBookmark  color="black" size={18}/></div>}
-            {!like && <div onClick={()=>setLike(true)} className="w-10 h-10 bg-white rounded-full flex justify-center items-center"><IoHeartOutline color="black" size={20}/></div>}
-            {like && <div onClick={()=>setLike(false)} className="w-10 h-10 bg-white rounded-full flex justify-center items-center"><IoHeart  color="pink" fill="pink" size={20}/></div>}
+            {!bookmark && <div onClick={handleBookmark} className="w-10 h-10 bg-white rounded-full flex justify-center items-center mx-1"><FaRegBookmark color="black" size={18}/></div>}
+            {(bookmark) && <div onClick={handleBookmark} className="w-10 h-10 bg-white rounded-full flex justify-center items-center mx-1"><FaBookmark  color="black" size={18}/></div>}
+            {!like && <div onClick={handleLike} className="w-10 h-10 bg-white rounded-full flex justify-center items-center"><IoHeartOutline color="black" size={20}/></div>}
+            {(like) && <div onClick={handleLike} className="w-10 h-10 bg-white rounded-full flex justify-center items-center"><IoHeart  color="pink" fill="pink" size={20}/></div>}
           </div>
          
         </div>

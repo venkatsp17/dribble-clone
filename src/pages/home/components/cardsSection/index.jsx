@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import ImageCard from "../../components/postcard"
-import OutlineButton from '../outlineButton';
-import Subnav from "../subnav";
+import ImageCard from "../postcard"
+import OutlineButton from '../../../../components/common/outlineButton';
+import Subnav from "../../../../components/header/subnav";
 import {useLayoutEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserFromLocalStorage } from '../../redux/authSlice';
+import { setUserFromLocalStorage } from '../../../../redux/authSlice';
 
 
 const CardsSection = ({data}) => {

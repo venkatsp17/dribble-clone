@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
-import { SignUpVideo } from "../../assets";
-import OutlineButton from "../../components/outlineButton";
-import RoundedButton from "../../components/roundedbutton";
-import { loginUser } from "../../api/query";
+import { SignUpVideo } from "../../../assets";
+import OutlineButton from "../../../components/common/outlineButton";
+import RoundedButton from "../../../components/common/roundedbutton";
+import { loginUser } from "../../../api/query";
 import { useNavigate } from "react-router-dom";
 
 

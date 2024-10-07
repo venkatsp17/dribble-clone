@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { SignInVideo } from "../../assets";
-import OutlineButton from "../../components/outlineButton";
-import RoundedButton from "../../components/roundedbutton";
-import { loginUser } from "../../api/query";
+import { SignInVideo } from "../../../assets";
+import OutlineButton from "../../../components/common/outlineButton";
+// import RoundedButton from "../../components/roundedbutton";
+import { loginUser } from "../../../api/query";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -83,12 +83,7 @@ const SignInPage = () => {
             />
           </div>
           <div onClick={(event) => handleLogin(event)}>
-            <RoundedButton
-              text={"Sign In"}
-              width={"full"}
-              padding={"4"}
-              weight={"semibold"}
-            />
+          <button className={`font-${"semibold"} p-${"4"} bg-${"black"} text-${"white"} border-none rounded-full w-${"full"} hover:opacity-60 flex items-center justify-center`}>Sign In</button>
           </div>
         </form>
         <p className="heading1 mt-5 self-center">
