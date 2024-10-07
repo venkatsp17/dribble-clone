@@ -1,12 +1,16 @@
 import { withHeaderFooter } from "../../components/hoc";
 import { useDispatch, useSelector } from "react-redux";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { setUserFromLocalStorage } from "../../redux/authSlice";
 import OutlineButton from "../../components/common/outlineButton";
 import { Placeholder, UploadCard } from "./components/accountpagecard";
+import CollectionList from "./components/collectionList";
 
 const AccountPage = () => {
   const { user } = useSelector((state) => state.auth);
+  const collections = useSelector((state) => state.collection.collections);
+
+  const [menu, setMenu] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -42,12 +46,45 @@ const AccountPage = () => {
         </div>
       </div>
       <div className="w-full lg:w-11/12 overflow-hidden whitespace-nowrap">
-        <ul className="flex gap-8 lg:gap-10 list-none p-10 border-b border-gray-400 overflow-hidden">
-          <li>Work</li>
-          <li>Boosted shots</li>
-          <li>Collections</li>
-          <li>Liked shots</li>
-          <li className="relative">
+        <ul className="flex gap-8 lg:gap-10 list-none p-6 border-b border-gray-400 overflow-hidden">
+          <li
+            onClick={() => setMenu(0)}
+            className={`hover:opacity-50 cursor-pointer ${
+              menu == 0 ? "bg-gray-200" : ""
+            } px-4 py-2 rounded-3xl`}
+          >
+            Work
+          </li>
+          <li
+            onClick={() => setMenu(1)}
+            className={`hover:opacity-50 cursor-pointer ${
+              menu == 1 ? "bg-gray-200" : ""
+            } px-4 py-2 rounded-3xl`}
+          >
+            Boosted shots
+          </li>
+          <li
+            onClick={() => setMenu(2)}
+            className={`hover:opacity-50 cursor-pointer ${
+              menu == 2 ? "bg-gray-200" : ""
+            } px-4 py-2 rounded-3xl`}
+          >
+            Collections
+          </li>
+          <li
+            onClick={() => setMenu(3)}
+            className={`hover:opacity-50 cursor-pointer ${
+              menu == 3 ? "bg-gray-200" : ""
+            } px-4 py-2 rounded-3xl`}
+          >
+            Liked shots
+          </li>
+          <li
+            onClick={() => setMenu(4)}
+            className={`relative hover:opacity-50 cursor-pointer ${
+              menu == 4 ? "bg-gray-200" : ""
+            } px-4 py-2 rounded-3xl`}
+          >
             About
             <span className="block md:hidden absolute right-[-1rem] top-1/2 transform -translate-y-1/2 bg-white pl-2 text-gray-600">
               &gt;
@@ -56,15 +93,24 @@ const AccountPage = () => {
         </ul>
       </div>
 
-      <div className="w-full flex justify-center self-center lg:justify-start mt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8 min-w-fit mx-16 lg:mx-32">
-          <UploadCard />
-          <Placeholder />
-          <Placeholder />
-          <Placeholder />
-          <Placeholder />
+      {menu == 0 ? (
+        <>
+          <div className="w-full flex justify-center self-center lg:justify-start mt-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8 min-w-fit mx-16 lg:mx-32">
+              <UploadCard />
+              <Placeholder />
+              <Placeholder />
+              <Placeholder />
+              <Placeholder />
+            </div>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+        <div className="w-full flex justify-center self-center lg:justify-start mx-16 lg:mx-32">
+          {menu == 2 ? <CollectionList collections={collections} /> : <></>}
         </div>
-      </div>
     </div>
   );
 };

@@ -29,6 +29,7 @@ const CardsSection = ({data}) => {
                 {data.map((item, index) => (
                     <ImageCard
                         key={index}
+                        id={item.id}
                         image={item.image}
                         title={item.title}
                         likes={item.likes}
@@ -38,7 +39,7 @@ const CardsSection = ({data}) => {
                 ))}
             </div>
             <div className='mt-12 mb-40'>
-                <OutlineButton text={"Browse more inspiration"} padding={4} width={70}/>
+                <OutlineButton text={"Browse more inspiration"} padding={"4"} width={"70"}/>
             </div>
         </div>
     )

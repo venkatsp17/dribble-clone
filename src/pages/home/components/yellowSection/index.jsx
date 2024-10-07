@@ -13,10 +13,10 @@ const YellowSection = () => {
             </p>
         <div className='flex mt-10'>
             <div className='mx-2'>
-              <RoundedButton text={"Get started now"} width={40} padding={4}/>
+              <RoundedButton text={"Get started now"} width={"40"} padding={"4"}/>
             </div>
             <div className='mx-2'>
-              <RoundedButton text={"Learn about hiring"} width={42} padding={4} color={"black"} bgcolor={"white"}/>
+              <RoundedButton text={"Learn about hiring"} width={"42"} padding={"4"} color={"black"} bgcolor={"white"}/>
             </div>
         </div>
         <p className='text-2xl heading font-medium mt-10 mb-36'>

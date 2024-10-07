@@ -3,7 +3,7 @@ import React from 'react';
 
 export const UploadCard = () => {
     return (
-      <div className="w-full h-64 bg-gray-100 rounded-lg flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300">
+      <div className="w-full h-64 bg-gray-100 rounded-lg flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 p-8">
         <h2 data-testid="title-UploadCard" className="text-xl font-bold">Upload your first shot</h2>
         <p data-testid="description-UploadCard" className="text-gray-600 mt-2">
           Show off your best work. Get feedback, likes and be a part of a growing community.

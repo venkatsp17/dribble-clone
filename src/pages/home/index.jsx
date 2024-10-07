@@ -4,12 +4,15 @@ import CardsSection from "./components/cardsSection";
 import YellowSection from "./components/yellowSection";
 import { withHeaderFooter } from "../../components/hoc";
 import CategoryCarousel from "./components/categoryCarousel";
-import withDataLayout from "../../layouts/dataLayout";
 import { useCategories, useItems, useProfiles } from "../../api/query";
 import { useLayoutEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserFromLocalStorage } from "../../redux/authSlice";
+import withDataLayout from "../../components/layouts/dataLayout";
+import { addCollection, toggleModal } from "../../redux/collectionSlice";
+import CollectionModal from "./components/collectionmodal";
 // import { Loading } from "../../assets";
+
 
 const ProfileCarouselComponent = withDataLayout(ProfileCarousel);
 const CardSectionComponent = withDataLayout(CardsSection);
@@ -33,6 +36,7 @@ const HomePage = () => {
   } = useCategories();
 
   const { user } = useSelector((state) => state.auth);
+  const isModalOpen = useSelector((state) => state.collection.isModalOpen);
 
   const dispatch = useDispatch();
 
@@ -40,6 +44,10 @@ const HomePage = () => {
   useLayoutEffect(()=>{
       dispatch(setUserFromLocalStorage());
   },[dispatch]);
+
+  const handleCreateCollection = (collection) => {
+    dispatch(addCollection(collection));
+  };
 
 
  
@@ -85,7 +93,6 @@ const HomePage = () => {
         />
       )
       }
-         {/* <ProfileCarousel /> */}
       <CardSectionComponent
         data={items}
         error={itemsError}
@@ -97,6 +104,12 @@ const HomePage = () => {
           data={categories}
           error={categoriesError}
           isLoading={isCategoriesLoading}
+        />
+      )}
+        {isModalOpen && (
+        <CollectionModal
+          onClose={() => {dispatch(toggleModal())}}
+          onCreate={handleCreateCollection}
         />
       )}
     </>

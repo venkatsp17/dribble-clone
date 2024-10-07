@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'; 
-import { Error, Loading } from '../assets';
+import { Error, Loading } from '../../assets';
 
 const withDataLayout = (WrappedComponent) => {
   const HOC = ({ data, error, isLoading }) => {
