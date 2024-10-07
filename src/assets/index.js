@@ -6,7 +6,8 @@ import ViewIcon from "./icons/viewIcon.svg"
 import Loading from "./loading/loading.gif"
 import Error from "./error/error.gif"
 import SignInVideo from "./videos/signInVideo.mp4"
+import SignUpVideo from "./videos/signUpVideo.mp4";
 
-export {logo, searchIcon, CardImage1, LikeIcon, ViewIcon, Loading, Error, SignInVideo}
+export {logo, searchIcon, CardImage1, LikeIcon, ViewIcon, Loading, Error, SignInVideo, SignUpVideo}
 
 

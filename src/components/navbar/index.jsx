@@ -25,6 +25,9 @@ const Navbar = () => {
     const navigateToLogin = () =>{
         navigate('/session/new');
     }
+    const navigateToSignUp = () =>{
+      navigate('/signup/new');
+  }
 
     const handleLogout = () =>{
         dispatch(logout());
@@ -85,7 +88,9 @@ const Navbar = () => {
                     <div className='hidden custom-md:block' onClick={navigateToLogin}> 
                         <TextButton  text={"Log in"}/>
                     </div>
-                    <RoundedButton text={"Sign up"} width={26} weight={"bold"} padding={"4"}/>
+                    <div onClick={navigateToSignUp}>
+                        <RoundedButton text={"Sign up"} width={26} weight={"bold"} padding={"4"}/>
+                    </div>  
                     </>
                 }
                     
